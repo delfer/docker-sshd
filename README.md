@@ -106,9 +106,10 @@ appended to `.ssh/authorized_keys`.
 
 ```
 docker run \
-    -v /host/id_rsa.pub:/home/user/.ssh/keys/id_rsa.pub:ro \
-    -v /host/id_other.pub:/home/user/.ssh/keys/id_other.pub:ro \
-    -v /host/share:/home/user/share \
+    -v /host/id_rsa.pub:/home/user1/.ssh/keys/id_rsa.pub:ro \
+    -v /host/id_other.pub:/home/user2/.ssh/keys/id_other.pub:ro \
+    -v /host/share1:/home/user1/share \
+    -v /host/share2:/home/user2/share \
     -p 2222:22 -d maltyxx/sshd \
     user::1000
 ```
