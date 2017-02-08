@@ -110,8 +110,8 @@ if [ ! -f "$userConfFinalPath" ]; then
     done < "$userConfFinalPath"
 
     # Source custom scripts, if any
-    if [ -d /etc/sshd.d ]; then
-        for f in /etc/sshd.d/*; do
+    if [ -d /etc/sshd/conf.d ]; then
+        for f in /etc/sshd/conf.d/*; do
             [ -x "$f" ] && . "$f"
         done
         unset f

@@ -70,7 +70,7 @@ sshd:
 ```
 
 ## User list
-/users.conf:
+/sshd/sshd-users.conf:
 
 ```
 user:password:e:1001:1001
@@ -81,7 +81,7 @@ user2:password2:e:1002:1002
 
 ```
 docker run \
-    -v /users.conf:/etc/sshd-users.conf:ro \
+    -v /sshd:/etc/sshd:ro \
     -v /share:/home/user/share \
     -p 2222:22 -d maltyxx/sshd \
     "user:password:e:1001:1001 user2:password2:e:1002:1002"
@@ -93,7 +93,7 @@ docker run \
 sshd:
     image: maltyxx/sshd
     volumes:
-        - /users.conf:/etc/sshd-users.conf:ro
+        - /sshd:/etc/sshd:ro
         - /share:/home/user/share
     ports:
         - "2222:22"
