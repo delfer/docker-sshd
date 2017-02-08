@@ -1,7 +1,7 @@
 #!/bin/bash
 set -e
 
-userConfPath="/etc/sshd-users.conf"
+userConfPath="/etc/ssh/sshd-users.conf"
 userConfFinalPath="/var/run/sshd-users.conf"
 
 function printHelp() {

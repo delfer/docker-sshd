@@ -1,4 +1,5 @@
 FROM debian:jessie
+
 MAINTAINER Yoann Vanitou
 
 RUN apt-get update && \
@@ -7,8 +8,10 @@ RUN apt-get update && \
 
 RUN mkdir -p /var/run/sshd
 
-COPY etc/ssh/sshd_config /etc/ssh/sshd_config
-COPY entrypoint.sh /
+COPY ./etc/ssh/sshd_config /etc/ssh/sshd_config
+COPY ./entrypoint.sh /
+
+VOLUME /etc/ssh/
 
 EXPOSE 22
 
