@@ -3,12 +3,13 @@ FROM debian:jessie
 MAINTAINER Yoann Vanitou
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get -y install openssh-server rsync && \
+    DEBIAN_FRONTEND=noninteractive apt-get --yes install openssh-server rsync && \
     rm -rf /var/lib/apt/lists/*
 
-RUN mkdir -p /var/run/sshd
+RUN mkdir -vp /var/run/sshd
 
-COPY ./etc/ssh/sshd_config /etc/ssh/sshd_config
+COPY ./etc/ssh/sshd-users.conf /etc/ssh
+COPY ./etc/ssh/sshd_config /etc/ssh
 COPY ./entrypoint.sh /
 
 VOLUME /etc/ssh/
