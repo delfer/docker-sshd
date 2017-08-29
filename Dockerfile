@@ -1,15 +1,17 @@
 FROM debian:jessie
 
-MAINTAINER Yoann Vanitou
+LABEL maintainer="Yoann VANITOU <yvanitou@gmail.com>"
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get --yes install openssh-server rsync && \
+    apt-get --yes install openssh-server rsync && \
+    apt-get clean && \
     rm -rf /var/lib/apt/lists/*
 
 RUN mkdir -vp /var/run/sshd
 
-COPY ./etc/ssh/sshd-users.conf /etc/ssh
-COPY ./etc/ssh/sshd_config /etc/ssh
+COPY ./ssh/* /etc/ssh
 COPY ./entrypoint.sh /
 
 VOLUME /etc/ssh/
