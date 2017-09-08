@@ -14,7 +14,7 @@ RUN mkdir -vp /var/run/sshd
 COPY ./ssh/* /etc/ssh/
 COPY ./entrypoint.sh /
 
-RUN chmod -v 644 /etc/ssh/*
+RUN chmod -v 600 /etc/ssh/*
 RUN chmod -v 755 /entrypoint.sh
 
 VOLUME /etc/ssh/
